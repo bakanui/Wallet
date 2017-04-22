@@ -12,9 +12,13 @@
         -->
     </style>
 
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+           
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar" />
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-    </style>
 
 </resources>
