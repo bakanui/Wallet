@@ -56,9 +56,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        txtName = (TextView) findViewById(R.id.name);
-        txtEmail = (TextView) findViewById(R.id.email);
+        View hView = navigationView.getHeaderView(0);
+        txtName = (TextView) hView.findViewById(R.id.name);
+        txtEmail = (TextView) hView.findViewById(R.id.email);
         btnLogout = (Button) findViewById(R.id.btnLogout);
 
         // SqLite database handler

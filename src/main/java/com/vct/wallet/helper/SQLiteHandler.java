@@ -1,8 +1,3 @@
-/**
- * Author: Ravi Tamada
- * URL: www.androidhive.info
- * twitter: http://twitter.com/ravitamada
- */
 package com.vct.wallet.helper;
 
 import android.content.ContentValues;
@@ -23,17 +18,20 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     // Database Name
-    private static final String DATABASE_NAME = "android_api";
+    private static final String DATABASE_NAME = "vctwallet";
 
-    // Login table name
-    private static final String TABLE_USER = "user";
+    // Login tables name
+    private static final String USERS_TABLE = "user";
+    private static final String TRANSACTIONS_TABLE = "transactions";
 
-    // Login Table Columns names
-    private static final String KEY_ID = "id";
-    private static final String KEY_NAME = "name";
-    private static final String KEY_EMAIL = "email";
-    private static final String KEY_UID = "uid";
-    private static final String KEY_CREATED_AT = "created_at";
+
+    // Login Tables Columns names
+    private static final String USERS_ID = "id";
+    private static final String USERS_NAME = "name";
+    private static final String USERS_EMAIL = "email";
+    private static final String USERS_UID = "uid";
+    private static final String USERS_CREATED_AT = "created_at";
+    private static final String USERS_UPDATED_AT = "updated_at";
 
     public SQLiteHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -42,11 +40,11 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     // Creating Tables
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_USER + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
-                + KEY_EMAIL + " TEXT UNIQUE," + KEY_UID + " TEXT,"
-                + KEY_CREATED_AT + " TEXT" + ")";
-        db.execSQL(CREATE_LOGIN_TABLE);
+        String LOGIN_TABLE = "CREATE TABLE " + USERS_TABLE + "("
+                + USERS_ID + " INTEGER PRIMARY KEY," + USERS_NAME + " TEXT,"
+                + USERS_EMAIL + " TEXT UNIQUE," + USERS_UID + " TEXT,"
+                + USERS_CREATED_AT + " TEXT," + USERS_UPDATED_AT + " TEXT," + ")";
+        db.execSQL(LOGIN_TABLE);
 
         Log.d(TAG, "Database tables created");
     }
@@ -55,7 +53,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
+        db.execSQL("DROP TABLE IF EXISTS " + USERS_TABLE);
 
         // Create tables again
         onCreate(db);
@@ -68,16 +66,16 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_NAME, name); // Name
-        values.put(KEY_EMAIL, email); // Email
-        values.put(KEY_UID, uid); // Email
-        values.put(KEY_CREATED_AT, created_at); // Created At
+        values.put(USERS_NAME, name); // Name
+        values.put(USERS_EMAIL, email); // Email
+        values.put(USERS_UID, uid); // Email
+        values.put(USERS_CREATED_AT, created_at); // Created At
 
         // Inserting Row
-        long id = db.insert(TABLE_USER, null, values);
+        long id = db.insert(USERS_TABLE, null, values);
         db.close(); // Closing database connection
 
-        Log.d(TAG, "New user inserted into sqlite: " + id);
+        Log.d(TAG, "New user inserted into SQLite: " + id);
     }
 
     /**
@@ -85,7 +83,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
      * */
     public HashMap<String, String> getUserDetails() {
         HashMap<String, String> user = new HashMap<String, String>();
-        String selectQuery = "SELECT  * FROM " + TABLE_USER;
+        String selectQuery = "SELECT  * FROM " + USERS_TABLE;
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -100,7 +98,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         // return user
-        Log.d(TAG, "Fetching user from Sqlite: " + user.toString());
+        Log.d(TAG, "Fetching user from SQLite: " + user.toString());
 
         return user;
     }
@@ -111,10 +109,10 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     public void deleteUsers() {
         SQLiteDatabase db = this.getWritableDatabase();
         // Delete All Rows
-        db.delete(TABLE_USER, null, null);
+        db.delete(USERS_TABLE, null, null);
         db.close();
 
-        Log.d(TAG, "Deleted all user info from sqlite");
+        Log.d(TAG, "Deleted all user info from SQLite");
     }
 
 }
