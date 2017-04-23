@@ -1,29 +1,23 @@
-apply plugin: 'com.android.application'
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
-    defaultConfig {
-        applicationId 'com.vct.wallet'
-        minSdkVersion 15
-        targetSdkVersion 25
+buildscript {
+    repositories {
+        jcenter()
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-        }
-    }
-    productFlavors {
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.1'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
     }
 }
 
-dependencies {
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.mcxiaoke.volley:library-aar:1.0.0'
-    compile 'com.google.android.gms:play-services-auth:10.2.1'
-    compile 'com.google.firebase:firebase-messaging:10.2.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
