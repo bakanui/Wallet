@@ -1,3 +1,8 @@
+/**
+ * Author: Ravi Tamada
+ * URL: www.androidhive.info
+ * twitter: http://twitter.com/ravitamada
+ */
 package com.vct.wallet.activity;
 
 import android.app.Activity;
@@ -133,11 +138,11 @@ public class LoginActivity extends Activity {
                         JSONObject user = jObj.getJSONObject("user");
                         String name = user.getString("name");
                         String email = user.getString("email");
-                        String created_at = user
-                                .getString("created_at");
+                        String created_at = user.getString("created_at");
+                        String balance = user.getString("balance");
 
                         // Inserting row in users table
-                        db.addUser(name, email, uid, created_at);
+                        db.addUser(name, email, uid, created_at, balance);
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this,

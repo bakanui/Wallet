@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity
 
     private TextView txtName;
     private TextView txtEmail;
+    private TextView txtBalance;
     private Button btnLogout;
 
     private SQLiteHandler db;
@@ -57,8 +58,10 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View hView = navigationView.getHeaderView(0);
+
         txtName = (TextView) hView.findViewById(R.id.name);
         txtEmail = (TextView) hView.findViewById(R.id.email);
+        txtBalance = (TextView) hView.findViewById(R.id.balance);
         btnLogout = (Button) findViewById(R.id.btnLogout);
 
         // SqLite database handler
@@ -76,10 +79,12 @@ public class MainActivity extends AppCompatActivity
 
         String name = user.get("name");
         String email = user.get("email");
+        String balance = "Rp " + user.get("balance");
 
         // Displaying the user details on the screen
         txtName.setText(name);
         txtEmail.setText(email);
+        txtBalance.setText(balance);
 
         // Logout button click event
         btnLogout.setOnClickListener(new View.OnClickListener() {
