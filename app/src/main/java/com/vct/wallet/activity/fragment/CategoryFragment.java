@@ -27,7 +27,7 @@ public class CategoryFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction("Fragment 3");
         }
-        return inflater.inflate(R.layout.fragment_fragment3, container, false);
+        return inflater.inflate(R.layout.fragment_category, container, false);
     }
 
 

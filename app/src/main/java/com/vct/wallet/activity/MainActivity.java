@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.vct.wallet.R;
 import com.vct.wallet.activity.fragment.AccountFragment;
+import com.vct.wallet.activity.fragment.HomeFragment;
 import com.vct.wallet.activity.fragment.TransactionFragment;
 import com.vct.wallet.activity.fragment.CategoryFragment;
 import com.vct.wallet.helper.SQLiteHandler;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity
         AccountFragment.OnFragmentInteractionListener,
         TransactionFragment.OnFragmentInteractionListener,
         CategoryFragment.OnFragmentInteractionListener,
+        HomeFragment.OnFragmentInteractionListener,
 
         NavigationView.OnNavigationItemSelectedListener {
 
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity
         TextView txtBalance = (TextView) hView.findViewById(R.id.balance);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.mainFrame, new AccountFragment());
+        ft.replace(R.id.mainFrame, new HomeFragment());
         ft.commit();
 
         // SqLite database handler
@@ -139,7 +141,10 @@ public class MainActivity extends AppCompatActivity
         //NOTE: creating fragment object
         Fragment fragment = null;
 
-        if (id == R.id.nav_account) {
+        if (id == R.id.nav_home) {
+            fragment = new HomeFragment();
+        }
+        else if (id == R.id.nav_account) {
             fragment = new AccountFragment();
         } else if (id == R.id.nav_transactions) {
             fragment = new TransactionFragment();

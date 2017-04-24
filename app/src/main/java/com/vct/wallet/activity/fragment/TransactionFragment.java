@@ -29,7 +29,7 @@ public class TransactionFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction("Fragment 2");
         }
-        return inflater.inflate(R.layout.fragment_fragment2, container, false);
+        return inflater.inflate(R.layout.fragment_transaction, container, false);
     }
 
 

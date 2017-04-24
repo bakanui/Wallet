@@ -25,7 +25,7 @@ public class AccountFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 
-        View view= inflater.inflate(R.layout.fragment_fragment1, container, false);
+        View view= inflater.inflate(R.layout.fragment_account, container, false);
 
         // NOTE : We are calling the onFragmentInteraction() declared in the MainActivity
         // ie we are sending "Fragment 1" as title parameter when fragment1 is activated

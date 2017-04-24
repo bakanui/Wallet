@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.vct.wallet.activity.fragment.HomeFragment"
+        android:orientation="vertical"
+        android:gravity="bottom">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.01"
+        android:text="@string/remaining_balance"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/balanceText"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:layout_weight="0.00"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.01"
+        android:gravity="center"
+        android:text="@string/recent_transaction" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="385dp"
+        android:orientation="vertical"
+        android:layout_weight="0.01"></LinearLayout>
+
+</LinearLayout>
