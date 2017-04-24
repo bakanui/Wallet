@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,22 +15,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.vct.wallet.R;
+import com.vct.wallet.activity.fragment.AccountFragment;
+import com.vct.wallet.activity.fragment.TransactionFragment;
+import com.vct.wallet.activity.fragment.CategoryFragment;
 import com.vct.wallet.helper.SQLiteHandler;
 import com.vct.wallet.helper.SessionManager;
 
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
 
-    private TextView txtName;
-    private TextView txtEmail;
-    private TextView txtBalance;
-    private Button btnLogout;
+
+        //Note : OnFragmentInteractionListener of all the fragments
+        implements
+        AccountFragment.OnFragmentInteractionListener,
+        TransactionFragment.OnFragmentInteractionListener,
+        CategoryFragment.OnFragmentInteractionListener,
+
+        NavigationView.OnNavigationItemSelectedListener {
 
     private SQLiteHandler db;
     private SessionManager session;
@@ -37,6 +44,14 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // session manager
+        session = new SessionManager(getApplicationContext());
+
+        if (!session.isLoggedIn()) {
+            logoutUser();
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -59,20 +74,16 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         View hView = navigationView.getHeaderView(0);
 
-        txtName = (TextView) hView.findViewById(R.id.name);
-        txtEmail = (TextView) hView.findViewById(R.id.email);
-        txtBalance = (TextView) hView.findViewById(R.id.balance);
-        btnLogout = (Button) findViewById(R.id.btnLogout);
+        TextView txtName = (TextView) hView.findViewById(R.id.name);
+        TextView txtEmail = (TextView) hView.findViewById(R.id.email);
+        TextView txtBalance = (TextView) hView.findViewById(R.id.balance);
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.mainFrame, new AccountFragment());
+        ft.commit();
 
         // SqLite database handler
         db = new SQLiteHandler(getApplicationContext());
-
-        // session manager
-        session = new SessionManager(getApplicationContext());
-
-        if (!session.isLoggedIn()) {
-            logoutUser();
-        }
 
         // Fetching user details from SQLite
         HashMap<String, String> user = db.getUserDetails();
@@ -86,14 +97,6 @@ public class MainActivity extends AppCompatActivity
         txtEmail.setText(email);
         txtBalance.setText(balance);
 
-        // Logout button click event
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                logoutUser();
-            }
-        });
     }
 
     @Override
@@ -128,31 +131,43 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        //NOTE: creating fragment object
+        Fragment fragment = null;
 
-        } else if (id == R.id.nav_slideshow) {
+        if (id == R.id.nav_account) {
+            fragment = new AccountFragment();
+        } else if (id == R.id.nav_transactions) {
+            fragment = new TransactionFragment();
+        }else if (id == R.id.nav_categories) {
+            fragment = new CategoryFragment();
+        }else if (id == R.id.nav_logout) {
+            logoutUser();
+        }
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        //NOTE: Fragment changing code
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.mainFrame, fragment);
+            ft.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    private void logoutUser() {
+
+    @Override
+    public void onFragmentInteraction(String title) {
+        // NOTE:  Code to replace the toolbar title based current visible fragment
+        getSupportActionBar().setTitle(title);
+    }
+
+    public void logoutUser() {
         session.setLogin(false);
 
         db.deleteUsers();

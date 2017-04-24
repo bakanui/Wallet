@@ -10,12 +10,16 @@
     <string name="btn_link_to_register">Not a member? Sign up now.</string>
     <string name="btn_link_to_login">Already registered! Login Me.</string>
     <string name="welcome">Welcome</string>
-    <string name="btn_logout">LOGOUT</string>
     <string name="name">Full Name</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main2">Dashboard</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="nav_account">Account</string>
+    <string name="nav_transaction">Transaction</string>
+    <string name="nav_category">Categories</string>
+    <string name="nav_logout">Logout</string>
 
 </resources>
