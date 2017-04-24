@@ -1,10 +1,4 @@
 <?php
-
-/**
- * @author Ravi Tamada
- * @link http://www.androidhive.info/2012/01/android-login-and-registration-with-php-mysql-and-sqlite/ Complete tutorial
- */
-
 class DB_Functions {
 
     private $conn;
@@ -50,6 +44,28 @@ class DB_Functions {
             return false;
         }
     }
+	 /**
+     * Storing new transaction
+     * returns newly created transaction details
+     */
+	public function storeTransaction($unique_id, $description, $amount){
+		$inn = $this->conn->prepare("INSERT INTO transactions(unique_id, description, amount, created_at) VALUES (?, ?, ?, NOW())");
+		$inn->bind_param("sss", $unique_id, $description, $amount);
+		$execs = $inn->execute();
+		$execs->close();
+
+		if ($execs) {
+            $inn = $this->conn->prepare("SELECT * FROM transactions WHERE unique_id = ?");
+            $inn->bind_param("s", $unique_id);
+            $inn->execute();
+            $user = $inn->get_result()->fetch_assoc();
+            $inn->close();
+
+            return $transaction;
+        } else {
+            return false;
+        }
+	}
 
     /**
      * Get user by email and password
@@ -126,7 +142,5 @@ class DB_Functions {
 
         return $hash;
     }
-
 }
-
 ?>
