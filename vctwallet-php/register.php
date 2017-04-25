@@ -27,7 +27,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password'])
     } else {
         // create a new user
         $user = $db->storeUser($name, $email, $password);
-        if ($user) {
+        if ($user != NULL) {
             // user stored successfully
             $response["error"] = FALSE;
             $response["uid"] = $user["unique_id"];

@@ -3,16 +3,15 @@ class DB_Functions {
 
     private $conn;
 
-    // constructor (jadi kaya misalnya manggil dari insert.php nah terus connect ke DB_connect.php 
-	//terus dia munculin di insert.php) 
+    // constructor
     function __construct() {
         require_once 'DB_Connect.php';
         // connecting to database
         $db = new Db_Connect();
         $this->conn = $db->connect();
-    } 
+    }
 
-    // destructor (kaya misalkan mau ngeclose ya ke close aja jadi makanya dia di kosongin)
+    // destructor
     function __destruct() {
         
     }
@@ -22,22 +21,22 @@ class DB_Functions {
      * returns user details
      */
     public function storeUser($name, $email, $password) {
-        $uuid = uniqid('', true); //function buat bikin unique id di php terus true itu buat 23 char, kalo false 13 char
-        $hash = $this->hashSSHA($password); //SSHA = salted secure hash algorithm (buat ngeencrypt pass)
-        $encrypted_password = $hash["encrypted"]; // encrypted password (udah di encryprt)
-        $salt = $hash["salt"]; // salt (tujuannya buat ngesecure)
+        $uuid = uniqid('', true);
+        $hash = $this->hashSSHA($password);
+        $encrypted_password = $hash["encrypted"]; // encrypted password
+        $salt = $hash["salt"]; // salt
 
-        $stmt = $this->conn->prepare("INSERT INTO users(unique_id, name, email, encrypted_password, salt, created_at) VALUES(?, ?, ?, ?, ?, NOW())"); //buat masuk2in ke tablenya, NOW waktu skrg, stmt itu nama variabel
-        $stmt->bind_param("sssss", $uuid, $name, $email, $encrypted_password, $salt); // ini buat ngisi tiap paramaternya s itu string
-        $result = $stmt->execute(); 
-        $stmt->close(); // connectionnya di close
+        $stmt = $this->conn->prepare("INSERT INTO users(unique_id, name, email, encrypted_password, salt, created_at) VALUES(?, ?, ?, ?, ?, NOW())");
+        $stmt->bind_param("sssss", $uuid, $name, $email, $encrypted_password, $salt);
+        $result = $stmt->execute();
+        $stmt->close();
 
-        // check for successful store (ini buat mastiin semua yg tadi di atas udah masuk apa blm tapi dia make email)
+        // check for successful store
         if ($result) {
-            $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");// dari select itu buat ngecek satu baris yaitu buat email data yg tadi udah masuk apa blm
-            $stmt->bind_param("s", $email); //ini buat ngisi parameternya
-            $stmt->execute(); // ini buat ngejalanin
-            $user = $stmt->get_result()->fetch_assoc(); // ini munculin
+            $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $user = $stmt->get_result()->fetch_assoc();
             $stmt->close();
 
             return $user;
@@ -53,13 +52,13 @@ class DB_Functions {
 		$inn = $this->conn->prepare("INSERT INTO transactions(unique_id, description, amount, created_at) VALUES (?, ?, ?, NOW())");
 		$inn->bind_param("sss", $unique_id, $description, $amount);
 		$execs = $inn->execute();
-		$execs->close();
+		$inn->close();
 
 		if ($execs) {
             $inn = $this->conn->prepare("SELECT * FROM transactions WHERE unique_id = ?");
             $inn->bind_param("s", $unique_id);
             $inn->execute();
-            $user = $inn->get_result()->fetch_assoc();
+            $transaction = $inn->get_result()->fetch_assoc();
             $inn->close();
 
             return $transaction;
@@ -107,7 +106,7 @@ class DB_Functions {
 
         $stmt->store_result();
 
-        if ($stmt->num_rows > 0) { 
+        if ($stmt->num_rows > 0) {
             // user existed 
             $stmt->close();
             return true;
@@ -125,9 +124,9 @@ class DB_Functions {
      */
     public function hashSSHA($password) {
 
-        $salt = sha1(rand()); //ngesecure random alfanumeric
-        $salt = substr($salt, 0, 10); //ini ngebersihin kalo stringnya pass ada titik atau ada koma
-        $encrypted = base64_encode(sha1($password . $salt, true) . $salt); //
+        $salt = sha1(rand());
+        $salt = substr($salt, 0, 10);
+        $encrypted = base64_encode(sha1($password . $salt, true) . $salt);
         $hash = array("salt" => $salt, "encrypted" => $encrypted);
         return $hash;
     }

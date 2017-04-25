@@ -104,9 +104,9 @@ public class AddEntryActivity extends AppCompatActivity {
                     if (!error) {
                         // User successfully stored in MySQL
                         // Now store the user in sqlite
-                        String uid2 = jObj.getString("uid2");
 
                         JSONObject transaction = jObj.getJSONObject("transaction");
+                        String uid2 = transaction.getString("uid");
                         String description = transaction.getString("description");
                         String amount = transaction.getString("amount");
                         String created_at = transaction.getString("created_at");

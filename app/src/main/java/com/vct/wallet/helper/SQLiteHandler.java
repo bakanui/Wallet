@@ -9,9 +9,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SQLiteHandler extends SQLiteOpenHelper {
@@ -112,7 +114,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         long id = db.insert(TABLE_TRANSACTION, null, values);
         db.close(); // Closing database connection
 
-        Log.d(TAG, "New user inserted into sqlite: " + id);
+        Log.d(TAG, "New transaction inserted into sqlite: " + id);
     }
 
     /**
@@ -185,5 +187,30 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         db.close();
 
         Log.d(TAG, "Deleted all transactions info from sqlite");
+    }
+
+    public ArrayList<String> getRecentTransactions(String uid) {
+        SQLiteDatabase newDB = this.getWritableDatabase();
+        ArrayList<String> results = new ArrayList<String>();
+        try {
+            Cursor c = newDB.rawQuery("SELECT description FROM transactions LIMIT 5", null);
+
+            if (c != null ) {
+                if  (c.moveToFirst()) {
+                    do {
+                        String description = c.getString(c.getColumnIndex("description"));
+                        results.add(description);
+                    }while (c.moveToNext());
+                }
+            }
+        } catch (SQLiteException se ) {
+            Log.e(getClass().getSimpleName(), "Could not create or Open the database");
+        } finally {
+            if (newDB != null)
+                newDB.execSQL("DELETE FROM " + TABLE_TRANSACTION);
+            newDB.close();
+        }
+        Log.d(TAG, "Fetching user from Sqlite: " + results);
+        return results;
     }
 }

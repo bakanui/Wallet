@@ -9,16 +9,16 @@ $response = array("error" => FALSE);
 if (isset($_POST['uid']) && isset($_POST['amount'])) {
 
     // receiving the post params
-    $unique_id = $_POST['uid'];
+    $uid = $_POST['uid'];
     $description = $_POST['description'];
     $amount = $_POST['amount'];
 
     // create a new transaction
-    $transaction = $db->storeTransaction($unique_id, $description, $amount);
+    $transaction = $db->storeTransaction($uid, $description, $amount);
     if ($transaction) {
         // transaction stored successfully
         $response["error"] = FALSE;
-        $response["uid"] = $transaction["unique_id"];
+        $response["transaction"]["uid"] = $transaction["unique_id"];
         $response["transaction"]["description"] = $transaction["description"];
         $response["transaction"]["amount"] = $transaction["amount"];
         $response["transaction"]["created_at"] = $transaction["created_at"];
