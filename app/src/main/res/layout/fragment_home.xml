@@ -29,10 +29,10 @@
         android:gravity="center"
         android:text="@string/recent_transaction" />
 
-    <LinearLayout
+    <ListView
+        android:id="@+id/transactionList"
         android:layout_width="match_parent"
-        android:layout_height="385dp"
-        android:orientation="vertical"
-        android:layout_weight="0.01"></LinearLayout>
+        android:layout_height="171dp"
+        android:layout_weight="0.06" />
 
 </LinearLayout>
