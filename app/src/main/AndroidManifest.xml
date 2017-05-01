@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.vct.wallet"
-    android:versionCode="1"
-    android:versionName="1.0">
-
-    <uses-sdk
-        android:minSdkVersion="9"
-        android:targetSdkVersion="21" />
+    package="com.vct.wallet">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
-        android:name=".app.AppController"
+        android:name="com.vct.wallet.Wallet"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar" >
         <activity
-            android:name=".activity.LoginActivity"
+            android:name="com.vct.wallet.ui.MainActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="adjustPan">
+            android:theme="@style/AppTheme.NoActionBar.TransparentStatusBar" >
+        </activity>
+        <activity
+            android:name="com.vct.wallet.ui.login.LoginActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.TransparentStatusBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,22 +33,56 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.RegisterActivity"
+            android:name="com.vct.wallet.ui.login.EmailLoginActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.MainActivity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme" />
+            android:name="com.vct.wallet.ui.login.EmailRegisterActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.AddEntryActivity"
-            android:label="@string/title_activity_add_entry"
-            android:parentActivityName=".activity.MainActivity"
-            android:theme="@style/AppTheme">
+            android:name="com.vct.wallet.ui.settings.SettingsActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.vct.wallet.ui.expenses.ExpenseDetailActivity"
+            android:label="@string/title_activity_expense_detail" >
+        </activity>
+        <activity android:name="com.vct.wallet.ui.reminders.NewReminderActivity" >
+        </activity>
+
+        <receiver android:name="com.vct.wallet.receivers.AlarmReceiver" >
+        </receiver>
+        <receiver
+            android:name="com.vct.wallet.receivers.AlarmsSystemBooted"
+            android:enabled="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.vct.wallet.widget.ExpensesWidgetProvider"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.pedrocarrillo.expensetracker.widget.ExpensesWidgetService.UPDATE_WIDGET" />
+            </intent-filter>
+
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.vct.wallet.activity.MainActivity" />
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider" />
+        </receiver>
+
+        <service
+            android:name="com.vct.wallet.widget.ExpensesWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <activity
+            android:name="com.vct.wallet.ui.help.HelpActivity"
+            android:label="@string/title_activity_help"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 
