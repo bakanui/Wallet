@@ -31,9 +31,6 @@ import com.vct.wallet.utils.Util;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by pcarrillo on 17/09/2015.
- */
 public class StatisticsFragment extends MainFragment implements ISelectDateFragment {
 
     private TextView tvPcCategoriesEmpty;

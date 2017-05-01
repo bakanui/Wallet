@@ -25,9 +25,6 @@ import com.vct.wallet.interfaces.IDateMode;
 import com.vct.wallet.ui.MainFragment;
 import com.vct.wallet.utils.ExpensesManager;
 
-/**
- * Created by pcarrillo on 17/09/2015.
- */
 public class ExpensesFragment extends MainFragment implements BaseViewHolder.RecyclerClickListener {
 
     public static final int RQ_NEW_EXPENSE = 1001;

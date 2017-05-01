@@ -20,9 +20,6 @@ import com.vct.wallet.R;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by Pedro on 9/20/2015.
- */
 public class DialogManager {
 
     private static DialogManager ourInstance = new DialogManager();

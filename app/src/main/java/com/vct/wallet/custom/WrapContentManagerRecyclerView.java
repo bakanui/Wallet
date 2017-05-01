@@ -11,10 +11,6 @@ import com.vct.wallet.BuildConfig;
 
 import java.lang.reflect.Field;
 
-/**
- * Created by pcarrillo on 07/10/2015.
- */
-
 public class WrapContentManagerRecyclerView extends android.support.v7.widget.LinearLayoutManager {
 
     private static boolean canMakeInsetsDirty = true;

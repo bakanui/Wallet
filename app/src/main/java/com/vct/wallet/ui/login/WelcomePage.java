@@ -6,9 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * Created by Pedro on 15/9/2015.
- */
 public class WelcomePage extends Fragment {
 
     final static String LAYOUT_ID = "layoutid";

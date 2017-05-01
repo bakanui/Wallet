@@ -27,9 +27,6 @@ import com.vct.wallet.utils.DialogManager;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by pcarrillo on 17/09/2015.
- */
 public class ReminderFragment extends MainFragment implements RemindersAdapter.RemindersAdapterOnClickHandler {
 
     public static final int RQ_REMINDER = 1002;

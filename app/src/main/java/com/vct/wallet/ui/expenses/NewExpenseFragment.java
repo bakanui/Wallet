@@ -33,9 +33,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by pcarrillo on 21/09/2015.
- */
 public class NewExpenseFragment extends DialogFragment implements View.OnClickListener{
 
     private TextView tvTitle;

@@ -10,9 +10,6 @@ import android.view.View;
 import com.vct.wallet.R;
 import com.vct.wallet.interfaces.IFragmentListener;
 
-/**
- * Created by Pedro on 15/9/2015.
- */
 public class BaseActivity extends AppCompatActivity implements IFragmentListener {
 
     @Override

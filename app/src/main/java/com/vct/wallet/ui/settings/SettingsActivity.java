@@ -14,9 +14,6 @@ import android.view.View;
 
 import com.vct.wallet.R;
 
-/**
- * Created by pcarrillo on 22/09/2015.
- */
 public class SettingsActivity  extends PreferenceActivity
         implements Preference.OnPreferenceChangeListener, SharedPreferences.OnSharedPreferenceChangeListener {
 

@@ -43,9 +43,6 @@ import com.vct.wallet.utils.Util;
 
 import java.io.File;
 
-/**
- * Created by pcarrillo on 07/10/2015.
- */
 public class HistoryFragment extends MainFragment implements BaseViewHolder.RecyclerClickListener, ISelectDateFragment {
 
     private RecyclerView rvHistory;

@@ -6,9 +6,6 @@ import android.content.Intent;
 
 import com.vct.wallet.entities.Reminder;
 
-/**
- * Created by Pedro on 9/27/2015.
- */
 public class AlarmsSystemBooted extends BroadcastReceiver {
 
     @Override

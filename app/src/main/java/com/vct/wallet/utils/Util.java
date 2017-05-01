@@ -15,9 +15,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by Pedro on 15/9/2015.
- */
 public class Util {
 
     public static String formatDateToString(Date date, String pattern) {

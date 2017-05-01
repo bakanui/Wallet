@@ -10,9 +10,6 @@ import com.vct.wallet.ui.MainActivity;
 
 import java.util.List;
 
-/**
- * Created by pcarrillo on 17/09/2015.
- */
 public interface IMainActivityListener {
 
     void setMode(@MainActivity.NavigationMode int mode);

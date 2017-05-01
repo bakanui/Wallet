@@ -6,9 +6,6 @@ import com.vct.wallet.R;
 import com.vct.wallet.interfaces.IUserActionsMode;
 import com.vct.wallet.ui.BaseActivity;
 
-/**
- * Created by Pedro on 9/26/2015.
- */
 public class NewReminderActivity extends BaseActivity {
 
     @Override

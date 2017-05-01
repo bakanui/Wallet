@@ -2,9 +2,6 @@ package com.vct.wallet.utils;
 
 import java.util.Date;
 
-/**
- * Created by pcarrillo on 16/10/2015.
- */
 public class DateManager {
 
     private Date mDateFrom;

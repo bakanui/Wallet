@@ -9,9 +9,6 @@ import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-/**
- * Created by pcarrillo on 17/09/2015.
- */
 public class Category extends RealmObject {
 
     @PrimaryKey

@@ -18,9 +18,6 @@ import java.util.List;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-/**
- * Created by Pedro on 9/25/2015.
- */
 public class Reminder extends RealmObject {
 
     @PrimaryKey

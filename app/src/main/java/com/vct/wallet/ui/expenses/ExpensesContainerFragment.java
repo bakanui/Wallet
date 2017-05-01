@@ -1,6 +1,5 @@
 package com.vct.wallet.ui.expenses;
 
-
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -23,11 +22,6 @@ import com.vct.wallet.ui.MainActivity;
 import com.vct.wallet.ui.MainFragment;
 import com.vct.wallet.utils.DialogManager;
 import com.vct.wallet.utils.ExpensesManager;
-
-
-/**
- * @author  pcarrillo on 16/10/2015.
- */
 
 public class ExpensesContainerFragment extends MainFragment implements ExpensesFragment.IExpenseContainerListener {
 

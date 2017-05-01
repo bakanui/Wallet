@@ -34,9 +34,6 @@ import com.vct.wallet.utils.Util;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by pcarrillo on 17/09/2015.
- */
 public class CategoriesFragment extends MainFragment implements TabLayout.OnTabSelectedListener, BaseViewHolder.RecyclerClickListener{
 
     private @IExpensesType int mCurrentMode = IExpensesType.MODE_EXPENSES;

@@ -8,9 +8,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-/**
- * Created by Pedro on 15/9/2015.
- */
 public class Wallet extends Application {
 
     public static final String TAG = Wallet.class.getSimpleName();

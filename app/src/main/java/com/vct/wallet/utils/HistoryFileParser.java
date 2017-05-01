@@ -5,9 +5,6 @@ import com.vct.wallet.interfaces.FileGeneratorParser;
 
 import java.util.List;
 
-/**
- * Created by pedrocarrillo on 3/20/16.
- */
 public class HistoryFileParser implements FileGeneratorParser {
 
     @Override

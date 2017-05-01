@@ -11,9 +11,6 @@ import android.view.View;
 import com.vct.wallet.Wallet;
 import com.vct.wallet.R;
 
-/**
- * Created by Pedro on 9/19/2015.
- */
 public class FABScrollBehavior extends FloatingActionButton.Behavior {
 
     public FABScrollBehavior(Context context, AttributeSet attrs) {

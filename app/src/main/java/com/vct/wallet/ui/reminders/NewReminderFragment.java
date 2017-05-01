@@ -27,9 +27,6 @@ import com.vct.wallet.utils.Util;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by Pedro on 9/26/2015.
- */
 public class NewReminderFragment extends BaseFragment implements View.OnClickListener{
 
     public static final String REMINDER_ID_KEY = "_reminder_id";

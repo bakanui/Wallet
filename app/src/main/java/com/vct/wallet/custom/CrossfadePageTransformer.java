@@ -5,9 +5,6 @@ import android.view.View;
 
 import com.vct.wallet.R;
 
-/**
- * Created by Pedro on 15/9/2015.
- */
 public class CrossfadePageTransformer implements ViewPager.PageTransformer {
 
     @Override

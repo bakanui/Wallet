@@ -11,9 +11,6 @@ import android.view.ViewGroup;
 import com.vct.wallet.R;
 import com.vct.wallet.interfaces.IFragmentListener;
 
-/**
- * Created by Pedro on 15/9/2015.
- */
 public class BaseFragment extends Fragment{
 
     protected IFragmentListener mFragmentListener;

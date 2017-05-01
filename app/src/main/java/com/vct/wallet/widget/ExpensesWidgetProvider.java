@@ -16,9 +16,6 @@ import com.vct.wallet.ui.MainActivity;
 import com.vct.wallet.ui.expenses.ExpenseDetailActivity;
 import com.vct.wallet.utils.Util;
 
-/**
- * Created by Pedro on 9/28/2015.
- */
 public class ExpensesWidgetProvider extends AppWidgetProvider {
 
     @Override

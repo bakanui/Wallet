@@ -13,9 +13,6 @@ import com.vct.wallet.ui.MainActivity;
 import com.vct.wallet.ui.reminders.NewReminderFragment;
 import com.vct.wallet.utils.RealmManager;
 
-/**
- * Created by Pedro on 9/26/2015.
- */
 public class AlarmReceiver extends BroadcastReceiver {
 
     @Override

@@ -9,9 +9,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 
-/**
- * Created by pedrocarrillo on 3/20/16.
- */
 public class FileManager {
 
     public static String getFileName() {

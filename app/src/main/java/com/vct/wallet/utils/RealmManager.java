@@ -11,9 +11,6 @@ import io.realm.Realm;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
 
-/**
- * Created by Pedro on 9/20/2015.
- */
 public class RealmManager {
 
     private Realm realm;

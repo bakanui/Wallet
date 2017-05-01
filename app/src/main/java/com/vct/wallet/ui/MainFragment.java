@@ -4,9 +4,6 @@ import android.content.Context;
 
 import com.vct.wallet.interfaces.IMainActivityListener;
 
-/**
- * Created by pcarrillo on 17/09/2015.
- */
 public class MainFragment extends BaseFragment {
 
     protected IMainActivityListener mMainActivityListener;

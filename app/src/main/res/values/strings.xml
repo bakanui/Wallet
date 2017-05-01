@@ -605,7 +605,7 @@
     <string name="date_format">Date Format</string>
     <string name="export">Export</string>
     <string name="write_external_message">Expense Tracker would like to create Files in order to export your expenses data</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="expenses_mail_content">Expenses Record by Expense Tracker</string>
     <string name="share_title">Send your record to your mail</string>
 
@@ -617,21 +617,12 @@
     <string name="btn_link_to_register">Not a member? Sign up now.</string>
     <string name="btn_link_to_login">Already registered! Login Me.</string>
     <string name="name">Full Name</string>
-    <string name="title_activity_main2">Dashboard</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="nav_account">Account</string>
-    <string name="nav_transaction">Transaction</string>
-    <string name="nav_category">Categories</string>
     <string name="nav_logout">Logout</string>
 
     <string name="remaining_balance">Your Remaining Balance: </string>
     <string name="recent_transaction">Recent Transactions: </string>
-
-    <string name="amount">Amount</string>
-    <string name="category">Category</string>
 
     <string name="title_activity_add_entry">Placeholder</string>
 </resources>

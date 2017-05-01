@@ -14,9 +14,6 @@ import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import io.realm.annotations.PrimaryKey;
 
-/**
- * Created by pcarrillo on 21/09/2015.
- */
 public class Expense extends RealmObject {
 
     @PrimaryKey

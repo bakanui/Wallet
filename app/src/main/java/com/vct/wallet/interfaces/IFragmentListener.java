@@ -4,9 +4,6 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 
-/**
- * Created by Pedro on 15/9/2015.
- */
 public interface IFragmentListener {
 
     void replaceFragment(Fragment fragment, boolean addToBackStack);

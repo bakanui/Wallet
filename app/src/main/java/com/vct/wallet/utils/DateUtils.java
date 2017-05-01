@@ -5,9 +5,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Pedro on 9/21/2015.
- */
 public class DateUtils {
 
     public static Calendar setDateStartOfDay(Calendar calendar){
