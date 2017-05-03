@@ -24,12 +24,14 @@ import android.widget.TextView;
 import com.vct.wallet.R;
 import com.vct.wallet.entities.Expense;
 import com.vct.wallet.helper.SQLiteHandler;
+import com.vct.wallet.helper.SessionManager;
 import com.vct.wallet.interfaces.IDateMode;
 import com.vct.wallet.interfaces.IMainActivityListener;
 import com.vct.wallet.ui.categories.CategoriesFragment;
 import com.vct.wallet.ui.expenses.ExpensesContainerFragment;
 import com.vct.wallet.ui.help.HelpActivity;
 import com.vct.wallet.ui.history.HistoryFragment;
+import com.vct.wallet.ui.login.EmailLoginActivity;
 import com.vct.wallet.ui.reminders.ReminderFragment;
 import com.vct.wallet.ui.settings.SettingsActivity;
 import com.vct.wallet.ui.statistics.StatisticsFragment;
@@ -55,6 +57,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private int idSelectedNavigationItem;
 
     private SQLiteHandler db;
+    private SessionManager session;
 
     private DrawerLayout mainDrawerLayout;
     private NavigationView mainNavigationView;
@@ -72,6 +75,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        session = new SessionManager(getApplicationContext());
+        db = new SQLiteHandler(getApplicationContext());
+        if (!session.isLoggedIn()) {
+            logoutUser();
+        }
         initUI();
         setUpDrawer();
         setUpToolbar();
@@ -330,6 +338,18 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             case R.id.nav_history:
                 if (!(currentFragment instanceof HistoryFragment)) replaceFragment(HistoryFragment.newInstance(), false);
                 break;
+            case R.id.nav_logout:
+                logoutUser();
+                break;
         }
+    }
+    public void logoutUser() {
+        session.setLogin(false);
+        db.deleteUsers();
+        // Launching the login activity
+        Intent intent = new Intent(MainActivity.this, EmailLoginActivity.class);
+        startActivity(intent);
+        finish();
+
     }
 }
