@@ -625,4 +625,7 @@
     <string name="recent_transaction">Recent Transactions: </string>
 
     <string name="title_activity_add_entry">Placeholder</string>
+
+    <string name="registerEmail">Register using Email</string>
+    <string name="registerGmail">Register with Google Account</string>
 </resources>

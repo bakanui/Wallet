@@ -1,8 +1,3 @@
-/**
- * Author: Ravi Tamada
- * URL: www.androidhive.info
- * twitter: http://twitter.com/ravitamada
- */
 package com.vct.wallet.ui.login;
 
 import android.app.Activity;
@@ -16,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.android.volley.Request.Method;
@@ -38,14 +34,11 @@ import java.util.Map;
 
 public class EmailLoginActivity extends Activity {
     private static final String TAG = EmailRegisterActivity.class.getSimpleName();
-    private Button btnLogin;
-    private Button btnLinkToRegister;
     private EditText inputEmail;
     private EditText inputPassword;
     private ProgressDialog pDialog;
     private SessionManager session;
     private SQLiteHandler db;
-    private SQLiteDatabase openOrCreateDatabase;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,8 +47,12 @@ public class EmailLoginActivity extends Activity {
 
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
-        btnLinkToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
+        Button btnLogin = (Button) findViewById(R.id.btnLogin);
+        ImageButton btnLinkToRegister = (ImageButton) findViewById(R.id.btnLinkToRegisterScreen);
+        ImageButton btnGoogleLogin = (ImageButton) findViewById(R.id.btnLinkToGmail);
+
+        btnLinkToRegister.setImageResource(R.drawable.register_mail);
+        btnGoogleLogin.setImageResource(R.drawable.register_google);
 
         // Progress dialog
         pDialog = new ProgressDialog(this);

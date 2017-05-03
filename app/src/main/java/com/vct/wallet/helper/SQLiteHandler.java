@@ -76,7 +76,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
             user.put("email", cursor.getString(2));
             user.put("uid", cursor.getString(3));
             user.put("created_at", cursor.getString(4));
-            user.put("balance", cursor.getString(5));
         }
         cursor.close();
         db.close();
