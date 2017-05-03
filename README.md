@@ -14,7 +14,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Project Demo
 
-See the latest release in this [page]https://github.com/bakanui/Wallet/releases for the application demo.
+See the latest release in this [page](https://github.com/bakanui/Wallet/releases) for the application demo.
 
 ## Authors
 
