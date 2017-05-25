@@ -19,7 +19,7 @@ See the latest release in this [page](https://github.com/bakanui/Wallet/releases
 ## Authors
 
 * **Bhaskara Ida Bagus** - *Initial work and logic* - [GitHub](https://github.com/bakanui)
-* **Vera Debora Vitamas** - *Database and JSON handling with PHP* - [Instagram](https://www.instagram.com/veradebv)
+* **Vera Debora Vitamas** - *Database and JSON handling with PHP* - [GitHub](https://github.com/veradebv)
 * **Nikita Chrissandha Mamangkey** - *Layout Design and Implementation* - [Instagram](https://www.instagram.com/nikchriss/)
 * **Predrika Br Ginting** - *Layout Design and Custom Drawables* - [Instagram](https://www.instagram.com/chapercha/)
 
